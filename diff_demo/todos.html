@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>todos</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{title}}</h2>
+        <input type="text" v-model="title" @keydown.enter="addTodo">
+        <ul>
+            <li v-for="todo in todos">
+                <input type="checkbox" v-model="todo.done">
+                <span :class="{done: todo.done}">{{todo.title}}</span>
+            </li>
+        </ul>
+        <div>
+            {{todos.filter(v => !v.done).length}}/{{todos.length}}
+            <hr>
+            <!-- 计算属性 -->
+            {{active}}/{{all}}
+        </div>
+    </div>
+
+    <script>
+        const App = {
+            data() {
+                return {
+                    title: '',
+                    todos: [
+                        {title:'吃饭', done:false}, 
+                        {title:'睡觉', done:true},
+                    ]
+                }
+            },
+            methods: {
+                addTodo() {
+                    this.todos.push({
+                        title: this.title,
+                        done:false
+                    })
+                    this.title = ''
+                }
+            },
+            computed:{
+                // 基于data状态计算属性的提供
+                active(){
+                    return this.todos.filter(v => !v.done).length
+                },
+                all(){
+                    return this.todos.length
+                }
+            }
+        }
+        Vue.createApp(App).mount('#app')
+
+    </script>
+    <style>
+        .done{
+            color: chartreuse;
+            text-decoration: line-through;
+        }
+    </style>
+</body>
+
+</html>
