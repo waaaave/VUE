@@ -1,6 +1,7 @@
 <template>
   <div>
     <v-header :seller="seller" />
+    <router-view/>
   </div>
 </template>
 <script>
@@ -17,7 +18,7 @@
       const getSellerData = async () => {
         const { data } = await getSellerRequest()
         this.seller = data
-        console.log(this.seller);
+        console.log(this.seller); 
       }
       getSellerData()
     },

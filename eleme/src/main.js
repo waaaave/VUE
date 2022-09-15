@@ -3,5 +3,8 @@ import { createApp } from 'vue'
 // 可以使用变量、嵌套、mixin
 import './common/stylus/index.styl'
 import App from './App.vue'
+import router from './router'
 
-createApp(App).mount('#app')
+createApp(App)
+    .use(router)
+    .mount('#app')
