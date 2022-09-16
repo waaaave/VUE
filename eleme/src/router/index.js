@@ -5,7 +5,7 @@ import seller from '../pages/Seller/Seller.vue'
 
 const routes = [{
     path: '/',
-    component: goods
+    redirect: "/goods"
 },{
     path: '/goods',
     component: goods
