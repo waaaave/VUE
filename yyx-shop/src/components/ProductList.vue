@@ -5,19 +5,23 @@
             :key="product.id"    
         >
         {{product.title}} - {{product.price}}
+        <button @click="addProductToCart(product)">Add to Cart</button>
         </li>
     </ul>
     </template>
     <script>
     // 数据管理后 组件 偏UI, data() 私有状态收回
-    import { mapState } from 'vuex'
+    import { mapState, mapActions } from 'vuex'
     export default {
         computed: mapState({
             products: state => state.products.all
         }),
         mounted(){
             this.$store.dispatch('products/getAllProducts')
-        }
+        },
+        methods: mapActions('cart',[
+            'addProductToCart'
+        ])
         // 计算属性
         // computed: {
         //     products() {
