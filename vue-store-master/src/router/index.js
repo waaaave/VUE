@@ -15,6 +15,11 @@ const routes = [
         component: () => import ('../pages/Home.vue')
     },
     {
+        path: '/goods',
+        name: 'Goods',//? 
+        component: () => import ('../pages/Goods.vue')
+    },
+    {
         path: '/order',
         name: 'Order',
         // 路由守卫

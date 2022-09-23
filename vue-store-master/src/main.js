@@ -29,6 +29,16 @@ router.beforeResolve((to,from,next)=>{
   
 })
 
+Vue.prototype.$target = 'http://101.132.181.9:3000/'
+
+Vue.prototype.notifyError = function(msg){
+  this.$notify.error({
+    title:'错误',
+    message: msg,
+    offset: 100
+  })
+}
+
 new Vue({
   router,
   store,
