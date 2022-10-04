@@ -11,3 +11,10 @@
     4. set 操作 组件重新运行
     5. reactive 函数只负责返回proxy实例， handler 另外处理
         get set 常规操作该有的
+
+- 响应式手写
+    1. proxy 包装对象实现数据读写等操作的拦截
+        proxy实例的操作
+    2. template{}{{}} 以及effect/useeffect
+        嗾使手机基于响应式对象下某key的依赖
+    3. 写操作时 使用triger去通过对象/key查找依赖集合
