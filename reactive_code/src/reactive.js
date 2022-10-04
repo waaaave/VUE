@@ -12,4 +12,5 @@ export const reactive = (target) => {
 
     return new Proxy(target, mutableHandlers)
 
+    console.log('receiver');
 }

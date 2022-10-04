@@ -1,28 +1,32 @@
 const targetMap = new WeakMap()
 let activeEffect = null
 
-
 export const track = (target, type, key) => {
-    // console.log(key, type,'111111111111111');
-    let depsMap = targetMap.get(target)
-    if (!depsMap) { // 之前没有传概念响应对象的处理器
-        // 准备做key的处理 进行初始化
-        targetMap.set(target, depsMap = new Map())
+    //  存进去
+    // console.log(key, type, '-=-=-=-=--');
+    // targetMap  -> target -> key
+    // 先基于target 找到对应的dep
+    let depsMap = targetMap.get(target);
+    if (!depsMap) {  // 之前没有创建响应对象的处理器
+        // key => 初始化
+        targetMap.set(target, (depsMap = new Map()))
+
     }
-    let deps = depsMap.get[key]
+    //  有没有具体的处理函数？
+    let deps = depsMap.get(key)
     if (!deps) {
-        deps = new Set()// 不能重复 所以初始化为set
+        deps = new Set()  // 不能重复  初始化  effect里的函数
     }
-    // activeEffect effect里面还没又加入map 的回调函数
+    // activeEffect  effect 里的还没有加入map的回调函数
     if (!deps.has(activeEffect) && activeEffect) {
-        deps.add(activeEffect)
+        deps.add(activeEffect);
     }
-    depsMap.set(key, deps)
-    console.log(depsMap, '1111111111111');
+    depsMap.set(key, deps);
+    console.log(depsMap, '-=---=-=-');
 }
 
 export const trigger = (target, type, key) => {
-    const depsMap = targetMap.get(target)
+    const depsMap = targetMap.get(target);
     if (!depsMap) {
         return
     }
@@ -36,5 +40,14 @@ export const trigger = (target, type, key) => {
 }
 
 export const effect = (fn, options = {}) => {
+    // const effectFn =() => {
+    //     try {
+    //         activeEffect = effectFn
+    //         return fn()
+    //     } finally {
+    //         activeEffect = null
+    //     }
+    // }
+    // return effectFn
     activeEffect = fn
 }
