@@ -8,15 +8,10 @@ const counter = reactive({ // 返回proxy实例
     num2: 2
 })
 
-counter.num1
-counter.num2
-counter.num1++
-counter.num2++
-
 effect(() => {
     dummy = counter.num1 + counter.num2
-    console.log(dummy,'aaaaaaaaaaaaaaaaaaaa');
+    console.log(dummy);
 
 })
 
-
+counter.num1++

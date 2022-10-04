@@ -1,5 +1,6 @@
 import { isObject } from "./utils";
 import { track, trigger } from './effect';
+import { reactive } from "./reactive";
 
 const get = createGetter(); //闭包
 const set = createSetter();
@@ -19,10 +20,10 @@ function createGetter(shallow = false) { // 参数默认值
     }
 }
 
-function createSetter() {
-    return function(target, key, value, receiver) {
+function createSetter(shallow = false) {
+    return function get(target, key, value, receiver) {
         const result = Reflect.set(target, key, value, receiver);
-        trigger(target, 'set', key)
+        trigger(target, 'get', key)
         return result
     }
 }

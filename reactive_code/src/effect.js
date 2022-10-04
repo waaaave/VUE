@@ -7,9 +7,9 @@ export const track = (target, type, key) => {
     let depsMap = targetMap.get(target)
     if (!depsMap) { // 之前没有传概念响应对象的处理器
         // 准备做key的处理 进行初始化
-        targetMap.set(target, depsMap = new Map())
+        targetMap.set(target, (depsMap = new Map()))
     }
-    let deps = depsMap.get[key]
+    let deps = depsMap.get(key)
     if (!deps) {
         deps = new Set()// 不能重复 所以初始化为set
     }
@@ -18,7 +18,6 @@ export const track = (target, type, key) => {
         deps.add(activeEffect)
     }
     depsMap.set(key, deps)
-    console.log(depsMap, '1111111111111');
 }
 
 export const trigger = (target, type, key) => {
