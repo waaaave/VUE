@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo7</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                message: 'jspang.com'
+            }
+        },
+        methods:{
+            handleItemClick(){
+                alert('waaaaaaaaaaaaaave')
+            }
+        },
+        beforeCreate(){ // 实例生成之前
+            alert('beforeCreate')
+        }, 
+        created(){ // 实例生成之后
+            alert('created')
+        },
+        beforeMount(){ //挂载之前
+            alert('beforeMount')
+        },
+        mounted(){ // 挂载
+            alert('mounted')
+        },
+        template: "<h2 v-on:click = 'handleItemClick' >{{message}}</h2>"
+    })
+    const vm = app.mount("#app")
+
+</script>
+
+</html>
