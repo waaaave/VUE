@@ -41,7 +41,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from 'vue'
 import { UserProps } from '../store/store'
 const props = defineProps<{user: UserProps}>()
 </script>

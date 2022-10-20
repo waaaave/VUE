@@ -24,6 +24,11 @@ const router = createRouter({
             name :'ColumnDetail',
             component : () => import('../views/ColumnDetail.vue')
         },
+        {
+            path:'/column/:id',
+            name: 'column',
+            component: () => import ('../views/ColumnDetail.vue')
+        },
     ]
 })
 
